@@ -1,4 +1,5 @@
 // client app: http://notesapp-v1.dicodingacademy.com/
+// powershell: pm2 start npm --name "notes-api" -- run "start:prod"
 const hapi = require("@hapi/hapi");
 const routes = require("./routes");
 
