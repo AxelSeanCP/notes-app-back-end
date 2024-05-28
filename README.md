@@ -1,0 +1,1 @@
+note: when running newman make sure to do "set-executionpolicy remotesigned" then run the newman script, after that do "set-executionpolicy restricted"
