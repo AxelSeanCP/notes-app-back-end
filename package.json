@@ -1,5 +1,5 @@
 {
-  "name": "notes-app-backend",
+  "name": "notes-app-back-end",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,13 +12,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.2.0",
-    "eslint": "^9.2.0",
-    "globals": "^15.2.0",
-    "nodemon": "^3.1.0"
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "nodemon": "^3.0.1"
   },
   "dependencies": {
-    "@hapi/hapi": "^21.3.9",
-    "nanoid": "^3.3.7"
+    "@hapi/hapi": "^21.3.2",
+    "joi": "^17.13.3",
+    "nanoid": "^3.1.20"
   }
 }
