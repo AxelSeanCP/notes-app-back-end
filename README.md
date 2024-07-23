@@ -1,6 +1,6 @@
 # notes-app-backend
 
-notes app API with plugin.
+notes app API with plugin. From Dicoding's Back-End Fundamental class.
 
 ## Getting Started
 

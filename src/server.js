@@ -1,6 +1,6 @@
 const Hapi = require("@hapi/hapi");
 const notes = require("./api/notes");
-const NotesService = require("./services/inMemory/NotesService");
+const NotesService = require("./services/postgres/NotesService");
 const NotesValidator = require("./validator/notes");
 const ClientError = require("./exceptions/ClientError");
 require("dotenv").config();
@@ -38,6 +38,8 @@ const init = async () => {
       });
       newResponse.code(response.statusCode);
       return newResponse;
+    } else {
+      console.log(response);
     }
 
     return h.continue;
