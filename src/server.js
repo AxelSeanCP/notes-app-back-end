@@ -90,16 +90,30 @@ const init = async () => {
     // Mendapatkan konteks response dari request
     const { response } = request;
 
-    // Penanganan client error secara internal
-    if (response instanceof ClientError) {
+    if (response instanceof Error) {
+      // Penanganan client error secara internal
+      if (response instanceof ClientError) {
+        const newResponse = h.response({
+          status: "fail",
+          message: response.message,
+        });
+        newResponse.code(response.statusCode);
+        return newResponse;
+      }
+
+      // Mempertahankan penanganan client error oleh hapi secara native, seperti 404, etc.
+      if (!response.isServer) {
+        return h.continue;
+      }
+
+      // Penanganan error sesuai kebutuhan
       const newResponse = h.response({
-        status: "fail",
-        message: response.message,
+        status: "error",
+        message: "terjadi kegagalan pada server kami",
       });
-      newResponse.code(response.statusCode);
+      newResponse.code(500);
+      console.log(newResponse);
       return newResponse;
-    } else {
-      console.log(response);
     }
 
     return h.continue;
