@@ -74,7 +74,6 @@ class UsersService {
 
     const { id, password: hashedPassword } = result.rows[0];
 
-    console.log(result.rows[0]);
     const match = await bcrypt.compare(password, hashedPassword);
 
     if (!match) {
@@ -82,6 +81,16 @@ class UsersService {
     }
 
     return id;
+  }
+
+  async getUsersByUsername(username) {
+    const query = {
+      text: "SELECT id, username, fullname FROM users WHERE username LIKE $1",
+      values: [`%${username}%`],
+    };
+
+    const result = await this._pool.query(query);
+    return result.rows;
   }
 }
 
